@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>Getting Started Example</title>
+<link rel='stylesheet' type='text/css' href='lib/extjs4.1.1a/resources/css/ext-all.css' />
+<style type="text/css">
+	.startbutton {
+		background-image: url(Alien.png) !important;
+		width: 16px !important;
+		height: 16px !important;
+	}
+	.my-cd-icon {
+		background-image: url(16x16/CD.png) !important;
+	}
+	.my-copy-icon {
+		background-image: url(16x16/Copy.png) !important;
+	}
+	.my-folder-icon {
+		background-image: url(16x16/Folder.png) !important;
+	}
+	.my-boss-icon {
+		background-image: url(16x16/Boss.png) !important;
+	}
+	.my-people-icon {
+		background-image: url(16x16/People.png) !important;
+	}
+	.my-dollar-icon {
+		background-image: url(16x16/Dollar.png) !important;
+	}
+	.my-database-icon {
+		background-image: url(16x16/Database.png) !important;
+	}
+	.my-equipment-icon {
+		background-image: url(16x16/Equipment.png) !important;
+	}
+	.my-exit-icon {
+		background-image: url(16x16/Exit.png) !important;
+	}
+	.my-home-icon {
+		background-image: url(16x16/Home.png) !important;
+	}
+	.my-key-icon {
+		background-image: url(16x16/Key.png) !important;
+	}
+</style>
+<script src='lib/extjs4.1.1a/ext-all.js'></script>
+<script>
+Ext.require([
+    'Ext.tip.QuickTipManager',
+    'Ext.menu.*',
+    'Ext.window.*',
+    'Ext.tip.*',
+    'Ext.form.field.ComboBox',
+    'Ext.layout.container.Table',
+    'Ext.container.ButtonGroup'
+]);
+	
+Ext.onReady(function(){
+	Ext.create('Ext.Viewport', {
+		draggable: false,
+		renderTo: 'author',
+	    autoScroll: true,
+	    // title: 'My Panel',
+	    width: '100%',
+	    height: '100%',
+	    titleCollapse: true,
+		layout:'border',
+		defaults: {
+		    collapsible: false,
+		    split: false,
+		    bodyStyle: 'padding:15px'
+		},
+		items: [{
+		    title: 'Footer',
+		    region: 'south',
+		    height: 150,
+		    minSize: 75,
+		    maxSize: 250,
+		    cmargins: '5 0 0 0'
+		},{
+		    title: 'Navigation',
+		    region:'west',
+		    margins: '5 0 0 0',
+		    cmargins: '5 5 0 0',
+		    width: 175,
+		    minSize: 100,
+		    maxSize: 250
+		},{
+		    title: 'Main Content',
+		    collapsible: false,
+		    region:'center',
+		    margins: '5 0 0 0'
+		}]
+	});
+	
+});
+</script>
+</head>
+<body>
+	<div id="author"></div>
+</body>
+</html>
