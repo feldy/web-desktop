@@ -45,57 +45,50 @@
 <script src='lib/extjs4.1.1a/ext-all.js'></script>
 <script>
 Ext.require([
-    'Ext.tip.QuickTipManager',
-    'Ext.menu.*',
+    'Ext.tab.*',
     'Ext.window.*',
     'Ext.tip.*',
+    'Ext.layout.container.Border',
+    'Ext.tip.QuickTipManager',
+    'Ext.menu.*',
     'Ext.form.field.ComboBox',
     'Ext.layout.container.Table',
     'Ext.container.ButtonGroup'
 ]);
 	
 Ext.onReady(function(){
-	Ext.create('Ext.Viewport', {
-		draggable: false,
-		renderTo: 'author',
-	    autoScroll: true,
-	    // title: 'My Panel',
-	    width: '100%',
-	    height: '100%',
-	    titleCollapse: true,
-		layout:'border',
-		defaults: {
-		    collapsible: false,
-		    split: false,
-		    bodyStyle: 'padding:15px'
-		},
-		items: [{
-		    title: 'Footer',
-		    region: 'south',
-		    height: 150,
-		    minSize: 75,
-		    maxSize: 250,
-		    cmargins: '5 0 0 0'
-		},{
-		    title: 'Navigation',
-		    region:'west',
-		    margins: '5 0 0 0',
-		    cmargins: '5 5 0 0',
-		    width: 175,
-		    minSize: 100,
-		    maxSize: 250
-		},{
-		    title: 'Main Content',
-		    collapsible: false,
-		    region:'center',
-		    margins: '5 0 0 0'
-		}]
-	});
-	
+ //    var win,
+ //        button = Ext.get('show-btn');
+	//     button.on('click', function(){
+	//         if (!win) {
+	//             win = Ext.create('widget.window', {
+	//                 title: 'Layout Window',
+	//                 id: "window"
+	//                 closable: true,
+	//                 closeAction: 'hide',
+	//                 width: 600,
+	//                 minWidth: 350,
+	//                 height: 350
+	//             });
+	//         }
+	//         button.dom.disabled = true;
+	//         if (win.isVisible()) {
+	//             win.hide(this, function() {
+	//                 button.dom.disabled = false;
+	//             });
+	//         } else {
+	//             win.show(this, function() {
+	//                 button.dom.disabled = false;
+	//             });
+	//         }
+	//     });
+	// });
+	Ext.create("app.feldy.controllers.master.EntriUserController");
 });
+
+
 </script>
 </head>
 <body>
-	<div id="author"></div>
 </body>
 </html>

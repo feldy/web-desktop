@@ -33,7 +33,7 @@ Ext.define("app.feldy.util.Menu", {
 
                                 var toolbar2 = Ext.getCmp('toolbar2');
                                 if (Ext.getCmp('window1') == undefined || Ext.getCmp('window1') == null) {
-                                    var window1 = Ext.create('Ext.window.Window', {
+                                    var window1 = Ext.create('widget.window', {
                                         title: 'Pemasukan Harian',
                                         id: 'window1',
                                         height: 200,
@@ -43,14 +43,45 @@ Ext.define("app.feldy.util.Menu", {
                                         scope: this,
                                         closeAction: 'destroy',
                                         constrain: true,
+                                        animateTarget : Ext.getCmp('button_child_PH'),
+                                        setAnimateTarget : Ext.emptyFn,
+                                        animShow : function(){
+                                            this.el.fadeIn({
+                                                duration: .25,
+                                                callback: this.afterShow.createDelegate(this, [true], false),
+                                                scope: this
+                                            });
+                                        },
+                                        animHide : function(){
+                                            if (this.el.shadow) {
+                                                this.el.shadow.hide();
+                                            }
+                                            this.el.fadeOut({
+                                                duration: .25,
+                                                callback: this.afterHide,
+                                                scope: this
+                                            });
+                                        },
+                                        items: [{
+                                            xtype: 'button',
+                                            text: 'haloo', 
+                                            id: 'btn_halo',
+                                            handler: function () {
+                                                Ext.Msg.show({
+                                                    animateTarget: 'btn_halo',
+                                                    title: 'Everyday I\'m animatin\'',
+                                                    msg: 'I should have animated relative to the Ext.Button instance.<br><br>Didn\'t see? Close the dialog and try again.'
+                                                });
+                                            }
+                                        }],
                                         listeners: {
                                             destroy: function() {
                                                 var toolbar2 = Ext.getCmp('toolbar2');
                                                 toolbar2.remove('button_child_PH');
                                             },
                                             hide: function(component, func) {
-                                                console.log(component);
-                                                console.log(func);
+                                                // console.log(component);
+                                                // console.log(func);
                                                 // // Ext.get('pemasukan_harian').set()
                                                 // // console.log("hide");
                                                 // var toolbar2 = Ext.getCmp('toolbar2');
@@ -99,6 +130,7 @@ Ext.define("app.feldy.util.Menu", {
                             iconCls: 'my-database-icon',
                             handler: function(a, b) {
                                 var toolbar2 = Ext.getCmp('toolbar2');
+                                var win ;
                                 if (Ext.getCmp('button_child_DW') == undefined || Ext.getCmp('button_child_DW') == null) {
                                     toolbar2.add({
                                         xtype: 'button',
@@ -113,6 +145,28 @@ Ext.define("app.feldy.util.Menu", {
                                 } else {
                                     Ext.getCmp('button_child_DW').show();
                                 }
+                                Ext.create("app.feldy.controllers.master.EntriUserController").showForm();
+                                // if (!win) {
+                                //     win = Ext.create('widget.window', {
+                                //         title: 'Layout Window',
+                                //         id: 'window2',
+                                //         closable: true,
+                                //         closeAction: 'destroy',
+                                //         width: 600,
+                                //         minWidth: 350,
+                                //         height: 350
+                                //     });
+                                // }
+                                // button.dom.disabled = true;
+                                // if (win.isVisible()) {
+                                //     win.hide(this, function() {
+                                //         // button.dom.disabled = false;
+                                //     });
+                                // } else {
+                                //     win.show(this, function() {
+                                //         // button.dom.disabled = false;
+                                //     });
+                                // }
                             }
                         }, '-', {
                             text: 'All Programs',
