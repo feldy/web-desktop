@@ -14,6 +14,7 @@ Ext.define("app.feldy.controllers.master.EntriPegawaiController", {
                 enableToggle: true,
                 pressed: true,
                 scope: this,
+                iconCls: 'my-display16x16-icon',
                 id: 'buttonEntriPegawai',
                 text: this.title,
                 style: {
@@ -37,6 +38,7 @@ Ext.define("app.feldy.controllers.master.EntriPegawaiController", {
 				title: this.title,
 	            closeAction: 'destroy',
 	            closable: true,
+                iconCls: 'my-display16x16-icon',
 				id: 'windowEntriPegawai',
 				animateTarget : 'buttonEntriPegawai',
 	            height: 350,
@@ -59,6 +61,7 @@ Ext.define("app.feldy.controllers.master.EntriPegawaiController", {
 	                }
 	            }
 			});
+            Ext.getCmp("super-panel").add(this.windowEntriPegawai);
 		}
     }, 
 	itemComponent: function(){
@@ -66,6 +69,10 @@ Ext.define("app.feldy.controllers.master.EntriPegawaiController", {
     },
     showForm: function(){
     	var form = Ext.getCmp('windowEntriPegawai');
-    	form.show();
+        if (Ext.getCmp('windowEntriPegawai').hidden &&  !Ext.getCmp('buttonEntriPegawai').pressed) {
+            Ext.getCmp('buttonEntriPegawai').toggle();
+        } else {
+            form.show();
+        }
     }
 });

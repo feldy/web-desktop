@@ -11,9 +11,7 @@ Ext.define("app.feldy.util.StatusBar", {
 					xtype: 'button',
 					id: 'btnStart',
 					text: 'Start',
-					iconCls: 'startbutton',
-					
-					// cls: 'startbutton',
+					iconCls: 'my-alien-icon',
 					arrowCls: '',
 					menu: menu
 				}, '-', {

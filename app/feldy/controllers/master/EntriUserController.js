@@ -13,6 +13,7 @@ Ext.define("app.feldy.controllers.master.EntriUserController", {
             toolbar2.add({
                 xtype: 'button',
                 enableToggle: true,
+                iconCls: 'my-display16x16-icon',
                 pressed: true,
                 scope: this,
                 id: 'buttonEntriUser',
@@ -36,7 +37,9 @@ Ext.define("app.feldy.controllers.master.EntriUserController", {
 		if (Ext.getCmp('windowEntriUser') == undefined || Ext.getCmp('windowEntriUser') == null) {
 			this.windowEntriUser = Ext.create("widget.window", {
 				title: this.title,
+                // contentEl: 'main-panel-bgt',
 	            closeAction: 'destroy',
+                iconCls: 'my-display16x16-icon',
 	            closable: true,
 				id: 'windowEntriUser',
 				animateTarget : 'buttonEntriUser',
@@ -60,6 +63,7 @@ Ext.define("app.feldy.controllers.master.EntriUserController", {
 	                }
 	            }
 			});
+            Ext.getCmp("super-panel").add(this.windowEntriUser);
 		}
     }, 
     itemComponent: function(){
@@ -67,6 +71,10 @@ Ext.define("app.feldy.controllers.master.EntriUserController", {
     },
     showForm: function(){
     	var form = Ext.getCmp('windowEntriUser');
-    	form.show();
+    	if (Ext.getCmp('windowEntriUser').hidden &&  !Ext.getCmp('buttonEntriUser').pressed) {
+            Ext.getCmp('buttonEntriUser').toggle();
+        } else {
+    		form.show();
+        }
     }
 });

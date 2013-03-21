@@ -13,7 +13,15 @@ Ext.define("app.feldy.views.UILauncher", {
         var statusBar = Ext.create('app.feldy.util.StatusBar');
         Ext.applyIf(me, {
         	items: [{
-        		region: 'center'
+        		region: 'center',
+                id: 'super-panel'
+                // items: [{
+                //     xtype: 'panel',
+                //     id: 'super-panel',
+                //     style: {
+                //         'border': 'none'
+                //     }
+                // }]
         	}, {
         		region:'south',
 		    	items: [statusBar]
