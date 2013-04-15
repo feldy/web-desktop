@@ -2,6 +2,7 @@ Ext.define("app.feldy.controllers.master.EntriUserController", {
 	//inisialisasi variable
 	windowEntriUser: null,
 	title: "User Window",
+    // requires:['app.feldy.util.MenuRightClick'],
 
 	constructor: function() {
 		this.initComponent();
@@ -29,6 +30,16 @@ Ext.define("app.feldy.controllers.master.EntriUserController", {
                         windowEntriUser.hide();
                     }
                 }
+            });
+            Ext.getCmp('buttonEntriUser').getEl().on('contextmenu', function(node) {
+                node.preventDefault();
+                var contextMenu = new Ext.menu.Menu({
+                    items: [{
+                        text: 'Edit',
+                        iconCls: 'edit'
+                    }]
+                });
+                contextMenu.show(Ext.getCmp('buttonEntriUser').getEl());
             });
         } else {
             Ext.getCmp('buttonEntriUser').show();

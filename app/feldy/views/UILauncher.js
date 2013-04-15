@@ -15,17 +15,21 @@ Ext.define("app.feldy.views.UILauncher", {
         	items: [{
         		region: 'center',
                 id: 'super-panel'
-                // items: [{
-                //     xtype: 'panel',
-                //     id: 'super-panel',
-                //     style: {
-                //         'border': 'none'
-                //     }
-                // }]
         	}, {
         		region:'south',
 		    	items: [statusBar]
-        	}]
+        	}],
+            listener: {
+                afterrender: {
+                    fn: function(){
+                        // Ext.getCmp('panel-utama').getEl().on('contextmenu', function(e){
+                        //     e.preventDefault();
+                        //     console.log(e);
+                        // });
+                    },
+                    scope: me
+                }
+            }
         });
         me.callParent(arguments);
     }
